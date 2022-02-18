@@ -1,0 +1,43 @@
+{
+  "name": "prueba-tecnica",
+  "version": "1.0.0",
+  "description": "Prueba tecnica MDP - Ripley",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "ts-node-dev src/index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/masterawss/MDP-PruebaTecnica-Backend.git"
+  },
+  "keywords": [
+    "prueba_tecnica",
+    "mdp",
+    "backend",
+    "express"
+  ],
+  "author": "Anthony Will Solsol Soplin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/masterawss/MDP-PruebaTecnica-Backend/issues"
+  },
+  "homepage": "https://github.com/masterawss/MDP-PruebaTecnica-Backend#readme",
+  "dependencies": {
+    "@types/express": "^4.17.13",
+    "@types/sequelize": "^4.28.11",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "express-router-extended": "^0.1.2",
+    "nodemon": "^2.0.15",
+    "pg": "^8.7.3",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.16.1",
+    "yup": "^0.32.11"
+  },
+  "devDependencies": {
+    "ts-node": "^10.5.0",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.5.5"
+  }
+}
