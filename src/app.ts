@@ -9,8 +9,15 @@ import router from './routes';
 
 const app = express();
 app.use(express.json());
+app.use(express.urlencoded());
+
+import cors from 'cors'
+import {corsConfig} from './corsConfig'
+
+app.use(cors(corsConfig))
 
 app.use(router.exportRouter())
+
 
 app.use(function (err: any, req: Request, res: Response, next: NextFunction) {
     console.log(err.statusCode);

@@ -1,6 +1,7 @@
 import sequelizeConnection from '../connection'
 import { DataTypes, Model } from 'sequelize'
-
+import moment from 'moment'
+moment.locale('es');
 // export interface ClienteAttributes {
 //   id: number;
 //   nombres: string;
@@ -11,7 +12,6 @@ import { DataTypes, Model } from 'sequelize'
 //   updatedAt?: Date;
 //   deletedAt?: Date;
 // }
-
 class Cliente extends Model {
   public id!: number
   public nombres!: string
@@ -42,6 +42,25 @@ Cliente.init({
     type: DataTypes.DATE,
     allowNull: false
   },
+  fecha_nacimiento_formatted: {
+    type: DataTypes.VIRTUAL,
+    get() {
+      const parsed_date = moment(this.fecha_nacimiento)
+      return +parsed_date.format('D')+1 +' '+ parsed_date.format('MMMM YYYY');
+    },
+    set(value) {
+      throw new Error('Do not try to set the `fecha_nacimiento_formatted` value!');
+    }
+  },
+  age: {
+    type: DataTypes.VIRTUAL,
+    get() {
+      return moment().diff(this.fecha_nacimiento, 'years');
+    },
+    set(value) {
+      throw new Error('Do not try to set the `age` value!');
+    }
+  }
 }, {
   timestamps: true,
   sequelize: sequelizeConnection,

@@ -13,3 +13,11 @@ export const clienteStoreSchema = yup.object({
       .required('El campo de fecha de nacimiento es requerido'),
   }),
 });
+
+export const clienteDeleteSchema = yup.object({
+  body: yup.object({
+    id: yup
+      .string()
+      .required('El campo de dl ID es requerido')
+  })
+})

@@ -6,6 +6,8 @@ export const bodyRequestValidator =
   (schema: yup.ObjectSchema<any>) =>
   async (req: Request, _res: Response, next: NextFunction) => {
     try {
+      console.log('VAL', req.body);
+      
       await schema.validate({
         body: req.body,
       });

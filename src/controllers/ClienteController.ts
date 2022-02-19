@@ -1,5 +1,5 @@
 import { Response, Request } from 'express';
-import { getAll, store as storeCliente, calculateAvgEdades } from '../services/ClienteService';
+import { getAll, store as storeCliente, destroy as destroyCliente } from '../services/ClienteService';
 export const index = async (_req: Request, response: Response) => {
     try {
         const clientes = await getAll()
@@ -10,16 +10,17 @@ export const index = async (_req: Request, response: Response) => {
 }
 export const store = async (req: Request, response: Response) => {
     try {
-        await storeCliente(req.body)
-        return response.json('success')
+        let cliente = await storeCliente(req.body)
+        return response.json(cliente)
     } catch (error) {
         return response.status(500).send(error)
     }
 }
-export const getAvgEdades = async (_req: Request, response: Response) => {
+export const destroy = async (req: Request, response: Response) => {
     try {
-        const avg_edades = await calculateAvgEdades()
-        return response.json(avg_edades)
+        let id = req.params.id
+        await destroyCliente(id)
+        return response.json(id)
     } catch (error) {
         return response.status(500).send(error)
     }

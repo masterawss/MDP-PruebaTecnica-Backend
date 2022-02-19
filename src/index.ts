@@ -1,11 +1,10 @@
 import app from './app'
+
 import dbInit from './db/init'
+dbInit()
 
 import * as dotenv from 'dotenv';
-
 dotenv.config();
-
-dbInit()
 
 app.listen(
     process.env.PORT, 

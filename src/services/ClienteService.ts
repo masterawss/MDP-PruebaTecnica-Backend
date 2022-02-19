@@ -1,8 +1,4 @@
 import Cliente from "../db/models/Cliente"
-
-import sequelize from '../db/connection';
-import { QueryTypes } from 'sequelize'
-
 export const getAll = async () => {
     try {
         return await Cliente.findAll()
@@ -14,7 +10,8 @@ export const getAll = async () => {
 
 export const store = async (req: any) => {
     try {
-        await Cliente.create({
+        
+        return await Cliente.create({
             nombres: req.nombres,
             apellidos: req.apellidos,
             fecha_nacimiento: req.fecha_nacimiento,
@@ -24,15 +21,14 @@ export const store = async (req: any) => {
         throw error
     }
 }
-
-export const calculateAvgEdades = async () => {
+export const destroy = async (id: any) => {
     try {
-        const result = await sequelize.query(
-            'SELECT AVG(AGE(fecha_nacimiento)) as "avg_ages" FROM "Clientes"',
-            { type: QueryTypes.SELECT}
-          )
-        return result;
+        
+        return await Cliente.destroy({
+            where: {id},
+        });
     } catch (error) {
+        console.log('ERROR', error);
         throw error
     }
 }
