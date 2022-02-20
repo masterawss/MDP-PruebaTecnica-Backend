@@ -9,7 +9,7 @@ const sequelize = new Sequelize(
     process.env.DB_PASSWORD, 
     {
         dialect: 'postgres',
-        host: 'localhost'
+        host: process.env.HOST!
     }
 );
 
